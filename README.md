@@ -49,6 +49,44 @@ This project was developed as my Final Degree Project for the Multiplatform Appl
 
 ---
 
+# 🏗 System Design
+
+## Use Case Diagram
+
+![Use Case](screenshots/system-use-case.png)
+
+This diagram shows the main interactions between the user and the system, including authentication, movie search, ratings and recommendations.
+
+---
+
+## Database Schema
+
+![Database](screenshots/database-schema.png)
+
+The relational database stores users, movies, ratings, watch history and generated recommendations.
+
+---
+
+## Process Flow Diagrams
+
+### User Registration
+
+![Register](screenshots/flow-register.png)
+
+### Movie Visualization
+
+![Movie View](screenshots/flow-movie-view.png)
+
+### Movie Rating
+
+![Rating](screenshots/flow-rating.png)
+
+### Recommendation Generation
+
+![Recommendations](screenshots/flow-recommendations.png)
+
+---
+
 # 🏗 Architecture
 
 The application follows an MVC architecture:
