@@ -1,5 +1,11 @@
 # 🎬 StreamVerse – Movie & TV Recommendation Platform
 
+![Java](https://img.shields.io/badge/Java-17-red)
+![Spring Boot](https://img.shields.io/badge/SpringBoot-Backend-green)
+![MySQL](https://img.shields.io/badge/MySQL-Database-blue)
+![REST API](https://img.shields.io/badge/API-REST-orange)
+![License](https://img.shields.io/badge/License-MIT-yellow)
+
 <p align="center">
   <img src="screenshots/banner.png" width="800"/>
 </p>
