@@ -125,12 +125,20 @@ The relational database stores:
 
 # 📷 Screenshots
 
-(Add screenshots here if you want)
+## Login
+![Login](screenshots/login.png)
 
-- Login / Register
-- Recommendation dashboard
-- Movie details
-- Blog opinions
+## Register
+![Register](screenshots/register.png)
+
+## Recommendations
+![Recommendations](screenshots/recommendations.png)
+
+## Movie Details
+![Movie Details](screenshots/movie-details.png)
+
+## Blog
+![Blog](screenshots/blog.png)
 
 ---
 
