@@ -1,0 +1,60 @@
+<meta name="user-id" content="${usuario.idUsuario}"><!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iniciar Sesión - CineRecomendador</title>
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>CineRecomendador</h1>
+    <p>El mejor recomendador de películas y series</p>
+  </div>
+
+  <div class="content">
+    <div id="alertMessage" class="alert"></div>
+
+    <h2>Iniciar Sesión</h2>
+    <form id="loginForm" action="/api/auth/login" method="POST">
+      <div class="form-group">
+        <label for="username">Correo Electrónico</label>
+        <input type="email" id="username" name="username" required>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Contraseña</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+
+      <button type="submit">Iniciar Sesión</button>
+    </form>
+
+    <div class="message">
+      ¿No tienes cuenta? <a href="register.html">Regístrate aquí</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Verificar si hay un mensaje de éxito o error en la URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const errorParam = urlParams.get('error');
+    const successParam = urlParams.get('success');
+
+    const alertElement = document.getElementById('alertMessage');
+
+    if (errorParam) {
+      alertElement.textContent = "Error al iniciar sesión. Verifica tus credenciales.";
+      alertElement.classList.add('show');
+    } else if (successParam) {
+      alertElement.textContent = "Registro exitoso. Ya puedes iniciar sesión.";
+      alertElement.classList.add('show', 'success');
+    }
+  });
+</script>
+</body>
+</html>

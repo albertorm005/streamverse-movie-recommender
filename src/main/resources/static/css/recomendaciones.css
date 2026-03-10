@@ -1,0 +1,996 @@
+body {
+    padding: 0;
+    display: block;
+    background-color: #f9f9f9;
+    margin: 0;
+}
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-primary);
+    color: white;
+    padding: 15px 30px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.profile, .logout {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 15px;
+    border-radius: var(--radius);
+    transition: background-color 0.3s;
+    margin-left: 15px;
+}
+
+.profile:hover, .logout:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px 30px;
+    box-sizing: border-box;
+}
+
+.welcome-section {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.welcome-section h1 {
+    font-size: 28px;
+    color: var(--color-primary);
+    margin-bottom: 15px;
+}
+
+.welcome-section p {
+    font-size: 18px;
+    color: var(--color-text-light);
+    margin-bottom: 30px;
+}
+
+.recommendations-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.tabs {
+    display: flex;
+    justify-content: center;
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    padding: 12px 25px;
+    margin: 0 10px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-text-light);
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tab-btn.active {
+    color: var(--color-primary);
+    border-bottom-color: var(--color-primary);
+}
+
+.recommendations-container {
+    width: 100%;
+}
+
+.recommendation-card {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.recommendation-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.recommendation-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.recommendation-info {
+    padding: 15px;
+}
+
+.recommendation-card h3 {
+    margin: 0 0 10px 0;
+    font-size: 16px;
+    color: var(--color-text);
+}
+
+.recommendation-meta {
+    display: flex;
+    justify-content: space-between;
+    color: var(--color-text-light);
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.recommendation-score {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #f39c12;
+    font-weight: bold;
+}
+
+.recommendation-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.ver-detalles, .marcar-visto {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+
+.ver-detalles {
+    background-color: var(--color-primary, #3498db);
+    color: white;
+}
+
+.marcar-visto {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.ver-detalles:hover {
+    background-color: var(--color-primary-dark, #2980b9);
+}
+
+.marcar-visto:hover {
+    background-color: #e0e0e0;
+}
+
+.marcar-visto.visto {
+    background-color: #27ae60;
+    color: white;
+}
+
+.loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 0;
+    width: 100%;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(52, 152, 219, 0.3);
+    border-top-color: var(--color-primary, #3498db);
+    border-radius: 50%;
+    animation: spin 1s ease-in-out infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.no-recommendations {
+    text-align: center;
+    padding: 40px 0;
+    color: var(--color-text-light, #777);
+    width: 100%;
+}
+
+.error-message {
+    text-align: center;
+    padding: 30px;
+    background-color: #fff3f3;
+    border-radius: 8px;
+    color: #e74c3c;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Estilos para la barra de navegación principal */
+.main-navigation {
+    flex: 1;
+    margin: 0 20px;
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.main-nav-link {
+    padding: 10px 15px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.main-nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.main-nav-link.active {
+    background-color: rgba(255, 255, 255, 0.2);
+    font-weight: 600;
+}
+
+/* Estilos para la cuadrícula de recomendaciones */
+.recommendations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 25px;
+    width: 100%;
+}
+
+/* Estilos para la paginación */
+.paginacion {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+    gap: 8px;
+    width: 100%;
+}
+
+.pagina-btn {
+    padding: 8px 15px;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.pagina-btn:hover {
+    background-color: #e0e0e0;
+}
+
+.pagina-btn.active {
+    background-color: #007bff;
+    color: white;
+    border-color: #0056b3;
+}
+
+/* Estilos para el indicador de carga al desplazarse */
+.loading-more {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 0;
+    width: 100%;
+}
+
+.loading-more .spinner {
+    width: 30px;
+    height: 30px;
+    margin-bottom: 10px;
+}
+
+/* Estilos para el modal de detalles */
+.details-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.details-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.details-content {
+    width: 90%;
+    max-width: 1000px;
+    max-height: 90vh;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow-y: auto;
+}
+
+.details-header {
+    display: flex;
+    padding: 0;
+    position: relative;
+}
+
+.details-backdrop {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    filter: brightness(0.7);
+}
+
+.details-poster {
+    width: 180px;
+    position: absolute;
+    bottom: -60px;
+    left: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.details-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.details-body {
+    padding: 70px 30px 30px 30px;
+}
+
+.details-title-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.details-title {
+    margin: 0;
+    font-size: 24px;
+    color: var(--color-text);
+}
+
+.details-year {
+    font-size: 18px;
+    color: var(--color-text-light);
+    margin-left: 10px;
+}
+
+.details-rating {
+    display: flex;
+    align-items: center;
+    background-color: var(--color-primary, #3498db);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.details-rating span:first-child {
+    margin-right: 5px;
+    font-size: 16px;
+}
+
+.details-info {
+    display: flex;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.details-info span {
+    background-color: #f0f0f0;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    color: var(--color-text);
+}
+
+.details-overview {
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.details-cast {
+    margin-top: 30px;
+}
+
+.cast-list {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    padding-bottom: 15px;
+}
+
+.cast-item {
+    min-width: 100px;
+    text-align: center;
+}
+
+.cast-photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.cast-name {
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0;
+}
+
+.cast-character {
+    font-size: 12px;
+    color: var(--color-text-light);
+    margin: 0;
+}
+
+.details-actions {
+    margin-top: 30px;
+    display: flex;
+    gap: 15px;
+}
+
+.details-action-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.details-watch {
+    background-color: var(--color-primary, #3498db);
+    color: white;
+}
+
+.details-favorite {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.details-loading {
+    padding: 50px;
+    text-align: center;
+}
+
+.details-error {
+    padding: 30px;
+    text-align: center;
+    color: #e74c3c;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    .recommendations-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .tabs {
+        margin-top: 15px;
+        width: 100%;
+    }
+
+    .recommendations-grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 15px;
+    }
+
+    .recommendation-card img {
+        height: 220px;
+    }
+
+    .main-header {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    .main-navigation {
+        margin: 15px 0;
+        width: 100%;
+    }
+
+    .nav-list {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .details-header {
+        height: 200px;
+    }
+
+    .details-backdrop {
+        height: 200px;
+    }
+
+    .details-poster {
+        width: 120px;
+        bottom: -40px;
+        left: 20px;
+    }
+
+    .details-body {
+        padding: 50px 20px 20px;
+    }
+
+    .details-title {
+        font-size: 20px;
+    }
+
+    .cast-list {
+        gap: 10px;
+    }
+
+    .cast-item {
+        min-width: 80px;
+    }
+
+    .cast-photo {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+/* Estilos para la sección de "Mis Listas" */
+.list-section {
+    margin-bottom: 40px;
+}
+
+.list-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #2c3e50;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+}
+
+.list-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.list-item {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    background-color: #fff;
+}
+
+.list-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.list-item img {
+    width: 100%;
+    aspect-ratio: 2/3;
+    object-fit: cover;
+}
+
+.list-item-info {
+    padding: 15px;
+}
+
+.list-item-title {
+    font-size: 1rem;
+    margin: 0 0 5px 0;
+    font-weight: 600;
+}
+
+.list-item-year {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.list-item-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.list-item-buttons button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: background-color 0.2s;
+}
+
+.ver-detalles {
+    background-color: #3498db;
+    color: white;
+}
+
+.ver-detalles:hover {
+    background-color: #2980b9;
+}
+
+.quitar-lista {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.quitar-lista:hover {
+    background-color: #c0392b;
+}
+
+.empty-list {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 30px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    color: #6c757d;
+}
+
+.details-action-btn.visto {
+    background-color: #27ae60;
+}
+
+.details-action-btn.favorito {
+    background-color: #e74c3c;
+    color: white;
+}
+
+
+/* Estilos para el blog de opiniones */
+.blog-container {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.blog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.blog-header h2 {
+    font-size: 1.8rem;
+    color: #2c3e50;
+    margin: 0;
+}
+
+.btn-primary {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+}
+
+.blog-filter {
+    margin-bottom: 20px;
+    text-align: right;
+}
+
+.blog-filter select {
+    padding: 8px 12px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    background-color: white;
+    font-size: 14px;
+}
+
+.opiniones-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.opinion-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding: 20px;
+}
+
+.opinion-header {
+    margin-bottom: 15px;
+}
+
+.opinion-titulo {
+    margin: 0 0 10px 0;
+    font-size: 1.3rem;
+    color: #2c3e50;
+}
+
+.opinion-meta {
+    display: flex;
+    justify-content: space-between;
+    color: #7f8c8d;
+    font-size: 0.9rem;
+}
+
+.opinion-pelicula-info {
+    margin-bottom: 15px;
+    font-size: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.opinion-valoracion {
+    color: #f39c12;
+    letter-spacing: 2px;
+}
+
+.opinion-texto {
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: #2c3e50;
+    white-space: pre-line;
+}
+
+.opinion-footer {
+    display: flex;
+    justify-content: flex-end;
+    border-top: 1px solid #ecf0f1;
+    padding-top: 15px;
+}
+
+.opinion-votos {
+    display: flex;
+    gap: 10px;
+}
+
+.like-btn, .dislike-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background-color: #f0f0f0;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.like-btn:hover {
+    background-color: #e6f7ff;
+}
+
+.dislike-btn:hover {
+    background-color: #fff1f0;
+}
+
+.like-btn.active {
+    background-color: #e6f7ff;
+    color: #1890ff;
+}
+
+.dislike-btn.active {
+    background-color: #fff1f0;
+    color: #ff4d4f;
+}
+
+.opinion-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.opinion-form-container {
+    background-color: white;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 600px;
+    padding: 25px;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #7f8c8d;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #2c3e50;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.no-opiniones {
+    text-align: center;
+    padding: 40px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    color: #6c757d;
+}
+
+@media (max-width: 768px) {
+    .blog-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .blog-filter {
+        text-align: left;
+        width: 100%;
+    }
+
+    .blog-filter select {
+        width: 100%;
+    }
+
+    .opinion-pelicula-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .opinion-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 15px;
+    }
+
+    .eliminar-opinion-btn {
+        background: none;
+        border: none;
+        color: #e74c3c;
+        cursor: pointer;
+        font-size: 1.2rem;
+        padding: 5px;
+        margin-left: 10px;
+        border-radius: 50%;
+        transition: background-color 0.2s;
+    }
+
+    .eliminar-opinion-btn:hover {
+        background-color: #f8d7da;
+    }
+}
+
+
+.list-section {
+    margin-bottom: 30px;
+}
+
+.list-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 15px;
+}
+
+.list-item-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.list-item-poster img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.list-item-info {
+    padding: 15px;
+}
+
+.list-item-title {
+    margin: 0 0 10px 0;
+    font-size: 1.1rem;
+}
+
+.list-item-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.empty-list {
+    grid-column: 1 / -1;
+    padding: 20px;
+    text-align: center;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    color: #6c757d;
+}
+
+

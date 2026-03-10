@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recomendaciones - CineRecomendador</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/recomendaciones.css">
+</head>
+<body>
+<header class="main-header">
+    <div class="logo">CineRecomendador</div>
+    <nav class="main-navigation">
+        <ul class="nav-list">
+            <li><a href="#" class="main-nav-link active" data-type="movie" data-mode="recommended">Mis Recomendaciones</a></li>
+            <li><a href="#" class="main-nav-link" data-type="movie" data-mode="all">Todas las Películas</a></li>
+            <li><a href="#" class="main-nav-link" data-type="tv" data-mode="all">Todas las Series</a></li>
+            <li><a href="#" class="main-nav-link" data-type="all" data-mode="lists">Mis Listas</a></li>
+            <li><a href="#" class="main-nav-link" data-mode="blog">Blog de Opiniones</a></li>
+        </ul>
+    </nav>
+    <div class="user-actions">
+        <a href="/logout" class="logout">Cerrar sesión</a>
+    </div>
+</header>
+
+<div class="container">
+    <div class="recommendations-header">
+        <h1>Recomendaciones para ti</h1>
+        <div class="tabs">
+            <button class="tab-btn active" data-type="movie">Películas</button>
+            <button class="tab-btn" data-type="tv">Series</button>
+        </div>
+    </div>
+
+    <div id="recomendaciones-container" class="recommendations-container">
+        <!-- El contenido se cargará dinámicamente -->
+        <div class="loading">
+            <div class="spinner"></div>
+            <p>Cargando recomendaciones...</p>
+        </div>
+    </div>
+</div>
+
+<script src="js/recomendaciones.js"></script>
+</body>
+</html>

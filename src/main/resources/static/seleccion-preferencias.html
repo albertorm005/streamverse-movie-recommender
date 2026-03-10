@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selecciona tus preferencias - CineRecomendador</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/seleccion-preferencias.css">
+</head>
+<body>
+<header class="main-header">
+    <div class="logo">CineRecomendador</div>
+    <nav>
+        <a href="/logout" class="logout">Cerrar sesión</a>
+    </nav>
+</header>
+
+<div class="container-full">
+    <div class="welcome-section">
+        <h1>¡Bienvenido a CineRecomendador!</h1>
+        <p>Selecciona 5 películas o series que te gusten para crear tus recomendaciones personalizadas</p>
+        <div class="selector-info">
+            <div class="counter">
+                <span id="numSeleccionadas">0</span>/5 seleccionadas
+            </div>
+            <button id="btnContinuar" class="btn-continue" disabled>Continuar y ver recomendaciones</button>
+        </div>
+    </div>
+
+    <div class="tabs">
+        <button class="tab-btn active" data-type="movie">Películas</button>
+        <button class="tab-btn" data-type="tv">Series</button>
+    </div>
+
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Buscar películas o series..." class="search-input">
+        <button id="searchButton" class="search-button">Buscar</button>
+    </div>
+
+    <div class="movies-grid" id="peliculas-container">
+        <!-- Las películas se cargarán aquí dinámicamente -->
+        <div class="loading">
+            <div class="spinner"></div>
+            <p>Cargando contenido...</p>
+        </div>
+    </div>
+</div>
+
+<script src="js/seleccion-preferencias.js"></script>
+</body>
+</html>
