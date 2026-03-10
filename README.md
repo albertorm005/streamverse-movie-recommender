@@ -1,5 +1,9 @@
 # 🎬 StreamVerse – Movie & TV Recommendation Platform
 
+<p align="center">
+  <img src="screenshots/banner.png" width="800"/>
+</p>
+
 StreamVerse is a full-stack web application that provides personalized movie and TV series recommendations based on user preferences.
 
 The platform allows users to discover new content, manage their watch history and favorites, and share opinions through an integrated community blog.
