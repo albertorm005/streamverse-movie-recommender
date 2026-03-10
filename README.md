@@ -100,6 +100,29 @@ The backend exposes REST endpoints that communicate with the frontend and extern
 
 ---
 
+# 📂 Project Structure
+
+src
+ └── main
+     ├── java
+     │   └── com.tfg.recomendador
+     │        ├── controller
+     │        ├── service
+     │        ├── repository
+     │        ├── model
+     │        └── config
+     │
+     └── resources
+          ├── static
+          │    ├── css
+          │    ├── js
+          │    └── html
+          └── application.properties
+
+This project follows a layered architecture separating controllers, services, repositories and models to keep the code modular and maintainable.
+
+---
+
 # 📊 Main Functionalities
 
 ## User System
